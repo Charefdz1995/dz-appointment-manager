@@ -18,7 +18,7 @@ class office(models.Model):
 	description = models.CharField(max_length = 200)
 	working_times = models.CharField() # Make it with choices too  
 
-class Address(models.Model):
+class address(models.Model):
 	wialaya = models.CharField(max_length = 20)
 	town = models.CharField(max_length = 20)
 	street = models.CharField(max_length = 20)
