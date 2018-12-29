@@ -13,7 +13,6 @@ class user(models.Model):
 class office(models.Model):
 	office_name = models.CharField(max_length = 70)
 	office_profession = models.CharField(max_length = 50)
-	address = models.CharField(max_length = 70) # This will be an other class 
 	user = models.ForeignKey(user,on_delete=models.CASCADE)
 	office_logo = models.ImageField()
 	description = models.CharField(max_length = 200)
@@ -25,8 +24,6 @@ class Address(models.Model):
 	street = models.CharField(max_length = 20)
 	zip_code = models.CharField(max_length = 10)
 	office = models.ForeignKey(office, on_delete = models.CASCADE)
-
-
 
 class contact(models.Model): 
 	office_phone_number = models.CharField(max_length = 20)
