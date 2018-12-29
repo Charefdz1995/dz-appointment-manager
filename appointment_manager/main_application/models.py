@@ -13,12 +13,20 @@ class user(models.Model):
 class office(models.Model):
 	office_name = models.CharField(max_length = 70)
 	office_profession = models.CharField(max_length = 50)
-	wialaya = models.CharField(max_length = 20) # Make this with choices 
 	address = models.CharField(max_length = 70) # This will be an other class 
 	user = models.ForeignKey(user,on_delete=models.CASCADE)
-	profile_photo = models.ImageField()
+	office_logo = models.ImageField()
 	description = models.CharField(max_length = 200)
 	working_times = models.CharField() # Make it with choices too  
+
+class Address(models.Model):
+	wialaya = models.CharField(max_length = 20)
+	town = models.CharField(max_length = 20)
+	street = models.CharField(max_length = 20)
+	zip_code = models.CharField(max_length = 10)
+	office = models.ForeignKey(office, on_delete = models.CASCADE)
+
+
 
 class contact(models.Model): 
 	office_phone_number = models.CharField(max_length = 20)
