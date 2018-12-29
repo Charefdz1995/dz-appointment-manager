@@ -10,13 +10,22 @@ class user(models.Model):
 	profile_photo = models.ImageField()
 	profile_Bio = models.CharField(max_length = 200)
 
+
+
 class office(models.Model):
 	office_name = models.CharField(max_length = 70)
 	office_profession = models.CharField(max_length = 50)
 	user = models.ForeignKey(user,on_delete=models.CASCADE)
 	office_logo = models.ImageField()
 	description = models.CharField(max_length = 200)
-	working_times = models.CharField() # Make it with choices too  
+
+class worktime(models.Model):
+	weekd_day = models.CharField(max_length = 15)
+	morning_start = models.CharField(max_length = 5)
+	morning_end = models.CharField(max_length = 5)
+	afternoon_start = models.CharField(max_length = 5)
+	afternoon_end = models.CharField(max_length = 5)
+	office = models.ForeignKey(office,on_delete=models.CASCADE)
 
 class address(models.Model):
 	wialaya = models.CharField(max_length = 20)
@@ -30,14 +39,11 @@ class contact(models.Model):
 	office_email = models.EmailField(max_length = 70)
 	office = models.ForeignKey(office, on_delete = models.CASCADE)
 	
-
-
 class appointmenet(models.Model):
 	user = models.ForeignKey(user,on_delete=models.CASCADE)
 	office = models.ForeignKey(office,on_delete=models.CASCADE)
 	timestamp = models.DateTimeField()
 	state = models.CharField(max_length = 10)
-
 
 class rating(models.Model):
 	user = models.ForeignKey(user,on_delete=models.CASCADE)
